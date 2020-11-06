@@ -37,17 +37,13 @@ RUN cd /opt/onedataSim/arti && make
 #set paths and permissions for onedataSim
 RUN cd /opt/onedataSim && bash install.sh
 
-#Onedata and tools needed by onedataSim
-
-#download and install oneclient
-#We did not use oneclient for downloading corsika-lago to isolate from its compiling
-# and because it were need use privileged mode.
-#RUN curl -sS http://get.onedata.org/oneclient-1902.sh | bash
-
+#not sure if the following is needed, but let's fix that later if needed
 #getfacl getfattr
 RUN yum -y install acl attr
 
 # xattr (this is  python2 but I had found the command only in python2)
+# no python2-pip in centos 7 (need to install epel)
+RUN yum -y install epel-release
 RUN yum -y install  python2-pip python-devel libffi-devel
 RUN pip install --upgrade pip
 RUN pip install xattr
