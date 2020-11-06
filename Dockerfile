@@ -9,7 +9,7 @@
 FROM centos:7.8.2003
 
 # Password for corsika lago repo
-#ARG PASS_FOR_LAGO_CORSIKA
+ARG PASS_FOR_LAGO_CORSIKA
 
 RUN yum -y update
 
